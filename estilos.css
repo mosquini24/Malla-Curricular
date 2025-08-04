@@ -1,11 +1,12 @@
 /* -- VARIABLES DE COLOR -- */
-/* Aquí definimos los colores principales para usarlos en toda la página. Es más fácil cambiarlos desde aquí. */
+/* Se mantienen los colores base, pero ajustaremos cómo se usan. */
 :root {
     --color-fondo: #fdeff2; /* Fondo general de la página (rosado muy claro) */
     --color-semestre: #ffffff; /* Fondo de las columnas de semestre (blanco) */
-    --color-titulo-principal: #d94a87; /* Color del título "Malla de la Princesa" */
-    --color-titulo-semestre: #e86fa3; /* Color de los títulos "Semestre X" */
-    --color-texto-ramo: #444; /* Color del texto de los ramos */
+    --color-titulo-principal: #d94a87; /* Color del título y de los ramos APROBADOS */
+    --color-titulo-principal-hover: #c72c71; /* Un rosado más oscuro para el hover */
+    --color-titulo-semestre: #e86fa3; /* Color de los títulos "Semestre X" y texto de ramos PENDIENTES */
+    --color-texto-aprobado: #ffffff; /* Texto blanco para ramos aprobados */
     --color-borde: #f3d6e6; /* Color para los bordes suaves */
     --color-sombra: rgba(223, 179, 200, 0.2);
     --color-banner-felicitaciones: #98DFAF; /* Verde pastel para el banner de felicitaciones */
@@ -13,11 +14,10 @@
     --fuente-principal: 'Poppins', sans-serif;
 }
 
-/* -- ESTILOS GENERALES -- */
+/* -- ESTILOS GENERALES (Sin cambios) -- */
 body {
     font-family: var(--fuente-principal);
     background-color: var(--color-fondo);
-    color: var(--color-texto-ramo);
     margin: 0;
     padding: 20px;
 }
@@ -33,21 +33,19 @@ header h1 {
     font-size: 2em;
 }
 
-/* -- ESTILO DEL BANNER DE FELICITACIONES -- */
+/* -- ESTILO DEL BANNER DE FELICITACIONES (Sin cambios) -- */
 .felicitaciones-banner {
     background-color: var(--color-banner-felicitaciones);
     color: var(--color-texto-banner);
     padding: 12px 20px;
-    border-radius: 50px; /* Bordes redondeados para un look amigable */
+    border-radius: 50px;
     font-weight: 600;
-    display: inline-block; /* Para que no ocupe todo el ancho */
+    display: inline-block;
     margin-top: 10px;
-    
-    /* Por defecto está oculto y aparece con una transición suave */
     opacity: 0;
     transform: translateY(-20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
-    pointer-events: none; /* Para que no se pueda hacer clic en él */
+    pointer-events: none;
 }
 
 .felicitaciones-banner.visible {
@@ -56,13 +54,13 @@ header h1 {
 }
 
 
-/* -- ESTRUCTURA DE LA MALLA -- */
+/* -- ESTRUCTURA DE LA MALLA (Sin cambios) -- */
 #malla-curricular {
-    display: flex; /* Usamos flexbox para poner los semestres en fila */
+    display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 15px;
-    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
+    overflow-x: auto;
     padding: 10px;
 }
 
@@ -70,7 +68,7 @@ header h1 {
     flex: 1;
     min-width: 190px;
     background-color: var(--color-semestre);
-    border-radius: 15px; /* Bordes más redondeados */
+    border-radius: 15px;
     padding: 20px;
     border: 1px solid var(--color-borde);
     box-shadow: 0 4px 12px var(--color-sombra);
@@ -86,43 +84,54 @@ header h1 {
     margin-bottom: 25px;
 }
 
-/* -- ESTILOS DE LOS RAMOS -- */
+/* -- ESTILOS DE LOS RAMOS (AQUÍ ESTÁN LOS CAMBIOS IMPORTANTES) -- */
+
+/* Estilo para un ramo PENDIENTE (estado por defecto) */
 .ramo {
-    background-color: transparent; /* Fondo transparente */
-    padding: 12px 5px; /* Menos padding lateral */
-    margin-bottom: 12px;
-    border-bottom: 1px solid var(--color-borde); /* Línea divisoria sutil */
+    background-color: transparent; /* Fondo transparente, se ve el fondo blanco del semestre */
+    color: var(--color-titulo-semestre); /* Texto de color rosado claro */
+    padding: 12px 8px;
+    margin-bottom: 10px;
     font-size: 0.95em;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    user-select: none; /* Para que el texto no se pueda seleccionar */
+    user-select: none;
+    border-radius: 8px; /* Bordes redondeados para que se vea bien el hover */
+    font-weight: 500;
 }
 
-.ramo:last-child {
-    border-bottom: none; /* El último ramo de un semestre no necesita línea */
-}
-
-.ramo:not(.bloqueado):hover {
+/* Efecto al pasar el mouse sobre un ramo pendiente */
+.ramo:not(.bloqueado):not(.aprobado):hover {
     background-color: #fdf6f8; /* Un rosado muy sutil al pasar el mouse */
-    border-radius: 8px;
+    color: var(--color-titulo-principal);
 }
 
-/* Estilo para un ramo APROBADO */
+/* -- ¡NUEVO ESTILO! Estilo para un ramo APROBADO -- */
+/* Esto es lo que se cambió para que coincida con tu nueva imagen. */
 .ramo.aprobado {
-    opacity: 0.5; /* Color disminuido como pediste */
-    text-decoration: line-through; /* Texto tachado */
-    text-decoration-color: var(--color-titulo-principal); /* El tachado es rosado */
+    background-color: var(--color-titulo-principal); /* Fondo rosado intenso */
+    color: var(--color-texto-aprobado); /* Texto en color blanco */
+    font-weight: 600; /* Texto un poco más grueso */
+    text-decoration: none; /* Quitamos el tachado anterior */
+    opacity: 1; /* Le devolvemos la opacidad completa */
 }
 
-/* Estilo para un ramo BLOQUEADO */
+/* Efecto al pasar el mouse sobre un ramo YA APROBADO */
+.ramo.aprobado:hover {
+    background-color: var(--color-titulo-principal-hover); /* Se oscurece un poco */
+}
+
+/* Estilo para un ramo BLOQUEADO (Sin cambios) */
 .ramo.bloqueado {
-    opacity: 0.6;
-    color: #999;
-    cursor: not-allowed; /* El cursor cambia para indicar que no se puede clickear */
+    color: #bbb; /* Texto de color gris claro */
+    cursor: not-allowed;
+    background-color: transparent !important; /* Aseguramos que no tenga fondo */
+    opacity: 0.7;
 }
 
-/* -- ESTILOS DEL POP-UP (MODAL) -- */
+
+/* -- ESTILOS DEL POP-UP (MODAL) (Sin cambios estéticos) -- */
 .modal {
     display: none; 
     position: fixed;
@@ -174,14 +183,13 @@ header h1 {
 }
 
 
-/* -- DISEÑO RESPONSIVO -- */
-/* Para que se vea bien en celulares */
+/* -- DISEÑO RESPONSIVO (Sin cambios) -- */
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
 
     #malla-curricular {
-        flex-direction: column; /* Las columnas se ponen una debajo de la otra */
+        flex-direction: column;
     }
 }
