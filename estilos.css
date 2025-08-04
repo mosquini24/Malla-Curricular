@@ -1,109 +1,128 @@
+/* -- VARIABLES DE COLOR -- */
+/* Aquí definimos los colores principales para usarlos en toda la página. Es más fácil cambiarlos desde aquí. */
 :root {
-    --color-fondo: #fef6f8;
-    --color-ramo: #ffffff;
-    --color-ramo-hover: #fdecf2;
-    --color-aprobado: #d1fecf;
-    --color-aprobado-hover: #b8f2b4;
-    --color-bloqueado: #f0f0f0;
-    --color-texto: #333;
-    --color-texto-secundario: #666;
-    --color-borde: #fcd9e5;
+    --color-fondo: #fdeff2; /* Fondo general de la página (rosado muy claro) */
+    --color-semestre: #ffffff; /* Fondo de las columnas de semestre (blanco) */
+    --color-titulo-principal: #d94a87; /* Color del título "Malla de la Princesa" */
+    --color-titulo-semestre: #e86fa3; /* Color de los títulos "Semestre X" */
+    --color-texto-ramo: #444; /* Color del texto de los ramos */
+    --color-borde: #f3d6e6; /* Color para los bordes suaves */
     --color-sombra: rgba(223, 179, 200, 0.2);
-    --color-modal-fondo: rgba(0, 0, 0, 0.5);
+    --color-banner-felicitaciones: #98DFAF; /* Verde pastel para el banner de felicitaciones */
+    --color-texto-banner: #fff; /* Texto blanco para el banner */
     --fuente-principal: 'Poppins', sans-serif;
 }
 
+/* -- ESTILOS GENERALES -- */
 body {
     font-family: var(--fuente-principal);
     background-color: var(--color-fondo);
-    color: var(--color-texto);
+    color: var(--color-texto-ramo);
     margin: 0;
     padding: 20px;
 }
 
 header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 header h1 {
-    color: #e63980;
+    color: var(--color-titulo-principal);
     font-weight: 600;
+    font-size: 2em;
 }
 
-header p {
-    color: var(--color-texto-secundario);
-    font-size: 1.1em;
+/* -- ESTILO DEL BANNER DE FELICITACIONES -- */
+.felicitaciones-banner {
+    background-color: var(--color-banner-felicitaciones);
+    color: var(--color-texto-banner);
+    padding: 12px 20px;
+    border-radius: 50px; /* Bordes redondeados para un look amigable */
+    font-weight: 600;
+    display: inline-block; /* Para que no ocupe todo el ancho */
+    margin-top: 10px;
+    
+    /* Por defecto está oculto y aparece con una transición suave */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none; /* Para que no se pueda hacer clic en él */
 }
 
+.felicitaciones-banner.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* -- ESTRUCTURA DE LA MALLA -- */
 #malla-curricular {
-    display: flex;
+    display: flex; /* Usamos flexbox para poner los semestres en fila */
     flex-direction: row;
     justify-content: center;
     gap: 15px;
-    overflow-x: auto;
+    overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas */
     padding: 10px;
 }
 
 .semestre {
     flex: 1;
-    min-width: 180px;
-    background-color: #fff0f5;
-    border-radius: 12px;
-    padding: 15px;
+    min-width: 190px;
+    background-color: var(--color-semestre);
+    border-radius: 15px; /* Bordes más redondeados */
+    padding: 20px;
     border: 1px solid var(--color-borde);
     box-shadow: 0 4px 12px var(--color-sombra);
+    transition: all 0.3s ease;
 }
 
 .semestre h2 {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-weight: 600;
-    color: #d14f88;
+    color: var(--color-titulo-semestre);
     margin-top: 0;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--color-borde);
-    padding-bottom: 10px;
+    margin-bottom: 25px;
 }
 
+/* -- ESTILOS DE LOS RAMOS -- */
 .ramo {
-    background-color: var(--color-ramo);
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    border-left: 5px solid #ffa6c9;
-    box-shadow: 0 2px 5px var(--color-sombra);
-    font-size: 0.9em;
+    background-color: transparent; /* Fondo transparente */
+    padding: 12px 5px; /* Menos padding lateral */
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--color-borde); /* Línea divisoria sutil */
+    font-size: 0.95em;
+    text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    user-select: none;
+    user-select: none; /* Para que el texto no se pueda seleccionar */
 }
 
-.ramo:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(223, 179, 200, 0.4);
-    background-color: var(--color-ramo-hover);
+.ramo:last-child {
+    border-bottom: none; /* El último ramo de un semestre no necesita línea */
 }
 
+.ramo:not(.bloqueado):hover {
+    background-color: #fdf6f8; /* Un rosado muy sutil al pasar el mouse */
+    border-radius: 8px;
+}
+
+/* Estilo para un ramo APROBADO */
 .ramo.aprobado {
-    background-color: var(--color-aprobado);
-    border-left-color: #6ada65;
-    text-decoration: line-through;
-    color: #555;
+    opacity: 0.5; /* Color disminuido como pediste */
+    text-decoration: line-through; /* Texto tachado */
+    text-decoration-color: var(--color-titulo-principal); /* El tachado es rosado */
 }
 
-.ramo.aprobado:hover {
-    background-color: var(--color-aprobado-hover);
-}
-
+/* Estilo para un ramo BLOQUEADO */
 .ramo.bloqueado {
-    background-color: var(--color-bloqueado);
-    border-left-color: #ccc;
-    opacity: 0.7;
-    cursor: not-allowed;
+    opacity: 0.6;
+    color: #999;
+    cursor: not-allowed; /* El cursor cambia para indicar que no se puede clickear */
 }
 
-/* Estilos del Modal */
+/* -- ESTILOS DEL POP-UP (MODAL) -- */
 .modal {
     display: none; 
     position: fixed;
@@ -112,8 +131,7 @@ header p {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: var(--color-modal-fondo);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-contenido {
@@ -124,7 +142,7 @@ header p {
     width: 80%;
     max-width: 450px;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     text-align: center;
     position: relative;
     animation: fadeIn 0.3s;
@@ -142,43 +160,28 @@ header p {
     right: 20px;
     font-size: 28px;
     font-weight: bold;
-}
-
-.cerrar-modal:hover,
-.cerrar-modal:focus {
-    color: #e63980;
-    text-decoration: none;
     cursor: pointer;
 }
 
-#lista-requisitos {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 15px;
-}
-
 #lista-requisitos li {
-    background-color: #fdecf2;
-    padding: 8px;
+    background-color: var(--color-fondo);
+    padding: 10px;
     border-radius: 5px;
     margin-bottom: 8px;
     font-weight: 600;
-    color: #c72c71;
+    color: var(--color-titulo-principal);
+    list-style-type: none;
 }
 
-/* Diseño Responsivo */
+
+/* -- DISEÑO RESPONSIVO -- */
+/* Para que se vea bien en celulares */
 @media (max-width: 768px) {
     body {
         padding: 10px;
     }
 
     #malla-curricular {
-        flex-direction: column;
-    }
-
-    .semestre {
-        min-width: unset;
-        width: 100%;
-        box-sizing: border-box;
+        flex-direction: column; /* Las columnas se ponen una debajo de la otra */
     }
 }
