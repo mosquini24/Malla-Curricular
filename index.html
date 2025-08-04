@@ -1,1 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Interactiva - Enfermería</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
+    <header>
+        <h1>Malla Interactiva de Enfermería</h1>
+        <p>Haz clic en los ramos que has aprobado. Tu progreso se guardará automáticamente.</p>
+    </header>
+
+    <main id="malla-curricular">
+        <div class="semestre">
+            <h2>Semestre I</h2>
+            <div class="ramo" data-id="COM1" data-nombre="Comunicación I" data-requisitos='[]'>Comunicación I</div>
+            <div class="ramo" data-id="EPD" data-nombre="Enfermería: Profesión y Disciplina" data-requisitos='[]'>Enfermería: Profesión y Disciplina</div>
+            <div class="ramo" data-id="IFB" data-nombre="Introducción a los Fundamentos Biológicos" data-requisitos='[]'>Introducción a los Fundamentos Biológicos</div>
+            <div class="ramo" data-id="FPA" data-nombre="Fundamentos Psicológicos y Antropológicos" data-requisitos='[]'>Fundamentos Psicológicos y Antropológicos</div>
+            <div class="ramo" data-id="DPA" data-nombre="Desarrollo Personal y Autoconocimiento" data-requisitos='[]'>Desarrollo Personal y Autoconocimiento</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre II</h2>
+            <div class="ramo" data-id="CIU1" data-nombre="Ciudadanía I" data-requisitos='[]'>Ciudadanía I</div>
+            <div class="ramo" data-id="FB" data-nombre="Fundamentos Bioquímicos" data-requisitos='["IFB"]'>Fundamentos Bioquímicos</div>
+            <div class="ramo" data-id="BE" data-nombre="Bioestadística" data-requisitos='[]'>Bioestadística</div>
+            <div class="ramo" data-id="FS" data-nombre="Fundamentos Socioculturales" data-requisitos='["FPA"]'>Fundamentos Socioculturales</div>
+            <div class="ramo" data-id="CCE" data-nombre="Ciencias del Cuidado Enfermero" data-requisitos='["EPD"]'>Ciencias del Cuidado Enfermero</div>
+            <div class="ramo" data-id="FMF" data-nombre="Fundamentos Morfofuncionales" data-requisitos='["IFB"]'>Fundamentos Morfofuncionales</div>
+            <div class="ramo" data-id="EUFIN1" data-nombre="Electivo UFIN" data-requisitos='[]'>Electivo UFIN</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre III</h2>
+            <div class="ramo" data-id="ING1" data-nombre="Inglés I" data-requisitos='[]'>Inglés I</div>
+            <div class="ramo" data-id="EPI" data-nombre="Epidemiología" data-requisitos='["BE"]'>Epidemiología</div>
+            <div class="ramo" data-id="PSC" data-nombre="Promoción de la Salud y Diversidad Cultural" data-requisitos='["FPA", "CCE"]'>Promoción de la Salud y Diversidad Cultural</div>
+            <div class="ramo" data-id="IGC1" data-nombre="Introducción a la Gestión del Cuidado I" data-requisitos='["CCE", "FMF"]'>Introducción a la Gestión del Cuidado I</div>
+            <div class="ramo" data-id="FF" data-nombre="Fundamentos Fisiopatológicos" data-requisitos='["FB", "FMF"]'>Fundamentos Fisiopatológicos</div>
+            <div class="ramo" data-id="EUFIN2" data-nombre="Electivo UFIN" data-requisitos='[]'>Electivo UFIN</div>
+            <div class="ramo" data-id="TI1" data-nombre="Taller Integrado I" data-requisitos='[]'>Taller Integrado I</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre IV</h2>
+            <div class="ramo" data-id="ING2" data-nombre="Inglés II" data-requisitos='["ING1"]'>Inglés II</div>
+            <div class="ramo" data-id="SFC" data-nombre="Salud Familiar Comunitaria" data-requisitos='["PSC"]'>Salud Familiar Comunitaria</div>
+            <div class="ramo" data-id="GCSF" data-nombre="Gestión del Cuidado en Salud Familiar y Comunitaria" data-requisitos='["EPI"]'>Gestión del Cuidado en Salud Familiar y Comunitaria</div>
+            <div class="ramo" data-id="IGC2" data-nombre="Introducción a la Gestión del Cuidado II" data-requisitos='["IGC1", "FF"]'>Introducción a la Gestión del Cuidado II</div>
+            <div class="ramo" data-id="MI" data-nombre="Metodología de la Investigación" data-requisitos='["EPI"]'>Metodología de la Investigación</div>
+            <div class="ramo" data-id="FE" data-nombre="Farmacología para Enfermería" data-requisitos='["IGC1", "FF"]'>Farmacología para Enfermería</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre V</h2>
+            <div class="ramo" data-id="ING3" data-nombre="Inglés III" data-requisitos='["ING2"]'>Inglés III</div>
+            <div class="ramo" data-id="GAS" data-nombre="Gestión y Administración en Salud" data-requisitos='["GCSF"]'>Gestión y Administración en Salud</div>
+            <div class="ramo" data-id="BAIE" data-nombre="Búsqueda Avanzada de Información en Enfermería" data-requisitos='["MI"]'>Búsqueda Avanzada de Info. en Enfermería</div>
+            <div class="ramo" data-id="GCAAM1" data-nombre="Gestión del Cuidado en Adulto y Adulto Mayor I" data-requisitos='["GCSF", "IGC2", "FE"]'>Gestión del Cuidado en Adulto y Adulto Mayor I</div>
+            <div class="ramo" data-id="GCM" data-nombre="Gestión del Cuidado de la Mujer" data-requisitos='["IGC2"]'>Gestión del Cuidado de la Mujer</div>
+            <div class="ramo" data-id="EUFIN3" data-nombre="Electivo UFIN" data-requisitos='[]'>Electivo UFIN</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre VI</h2>
+            <div class="ramo" data-id="ING4" data-nombre="Inglés IV" data-requisitos='["ING3"]'>Inglés IV</div>
+            <div class="ramo" data-id="GAE1" data-nombre="Gestión y Administración en Enfermería I" data-requisitos='["GAS"]'>Gestión y Administración en Enfermería I</div>
+            <div class="ramo" data-id="IE" data-nombre="Investigación en Enfermería" data-requisitos='["BAIE"]'>Investigación en Enfermería</div>
+            <div class="ramo" data-id="GCAAM2" data-nombre="Gestión del Cuidado en Adulto y Adulto Mayor II" data-requisitos='["GCAAM1", "FE"]'>Gestión del Cuidado en Adulto y Adulto Mayor II</div>
+            <div class="ramo" data-id="GCNA1" data-nombre="Gestión del Cuidado del Niño y Adolescente I" data-requisitos='["GCAAM1", "GCM"]'>Gestión del Cuidado del Niño y Adolescente I</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre VII</h2>
+            <div class="ramo" data-id="GCPRE" data-nombre="Gestión del Cuidado de Personas con Requerimientos Especiales" data-requisitos='["GCAAM2", "GAE1"]'>Gestión de Personas con Req. Especiales</div>
+            <div class="ramo" data-id="GAE2" data-nombre="Gestión y Administración en Enfermería II" data-requisitos='["GAE1"]'>Gestión y Admin. en Enfermería II</div>
+            <div class="ramo" data-id="SI" data-nombre="Seminario de Investigación" data-requisitos='["IE"]'>Seminario de Investigación</div>
+            <div class="ramo" data-id="GCUD" data-nombre="Gestión del Cuidado en Urgencias y Desastres" data-requisitos='["GCAAM2"]'>Gestión Cuidado en Urgencias y Desastres</div>
+            <div class="ramo" data-id="GCASM" data-nombre="Gestión del Cuidado de Personas con Alteraciones de Salud Mental" data-requisitos='["GCAAM1", "GCAAM2"]'>Gestión Cuidado en Salud Mental</div>
+            <div class="ramo" data-id="TI2" data-nombre="Taller Integrado II" data-requisitos='[]'>Taller Integrado II</div>
+        </div>
+        
+        <div class="semestre">
+            <h2>Semestre VIII</h2>
+            <div class="ramo" data-id="DGPS" data-nombre="Diseño y Gestión de Proyectos en Salud" data-requisitos='["GAE2"]'>Diseño y Gestión de Proyectos en Salud</div>
+            <div class="ramo" data-id="GCAE" data-nombre="Gestión del Cuidado en Áreas Emergentes" data-requisitos='["GCASM"]'>Gestión del Cuidado en Áreas Emergentes</div>
+            <div class="ramo" data-id="GCNA2" data-nombre="Gestión del Cuidado del Niño y Adolescente II" data-requisitos='["GCNA1"]'>Gestión del Cuidado del Niño y Adolescente II</div>
+            <div class="ramo" data-id="GAE3" data-nombre="Gestión y Administración en Enfermería III" data-requisitos='["GAE2"]'>Gestión y Admin. en Enfermería III</div>
+            <div class="ramo" data-id="EUFIN4" data-nombre="Electivo UFIN" data-requisitos='[]'>Electivo UFIN</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre IX</h2>
+            <div class="ramo especial" data-id="IGCi1" data-nombre="Internado Gestión del Cuidado I" data-requisitos='["S1_S8"]'>Internado Gestión del Cuidado I</div>
+            <div class="ramo" data-id="EEAP" data-nombre="Electivo de Especialización / Articulación con Postgrado" data-requisitos='[]'>Electivo de Especialización</div>
+        </div>
+
+        <div class="semestre">
+            <h2>Semestre X</h2>
+            <div class="ramo especial" data-id="IGCi2" data-nombre="Internado Gestión del Cuidado II" data-requisitos='["S1_S8"]'>Internado Gestión del Cuidado II</div>
+        </div>
+
+    </main>
+
+    <div id="modal-requisitos" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar-modal">&times;</span>
+            <h3>Requisitos Pendientes</h3>
+            <p>Para aprobar este ramo, primero debes aprobar:</p>
+            <ul id="lista-requisitos"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
