@@ -1,1 +1,184 @@
+:root {
+    --color-fondo: #fef6f8;
+    --color-ramo: #ffffff;
+    --color-ramo-hover: #fdecf2;
+    --color-aprobado: #d1fecf;
+    --color-aprobado-hover: #b8f2b4;
+    --color-bloqueado: #f0f0f0;
+    --color-texto: #333;
+    --color-texto-secundario: #666;
+    --color-borde: #fcd9e5;
+    --color-sombra: rgba(223, 179, 200, 0.2);
+    --color-modal-fondo: rgba(0, 0, 0, 0.5);
+    --fuente-principal: 'Poppins', sans-serif;
+}
 
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    margin: 0;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    color: #e63980;
+    font-weight: 600;
+}
+
+header p {
+    color: var(--color-texto-secundario);
+    font-size: 1.1em;
+}
+
+#malla-curricular {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.semestre {
+    flex: 1;
+    min-width: 180px;
+    background-color: #fff0f5;
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 4px 12px var(--color-sombra);
+}
+
+.semestre h2 {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #d14f88;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--color-borde);
+    padding-bottom: 10px;
+}
+
+.ramo {
+    background-color: var(--color-ramo);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 5px solid #ffa6c9;
+    box-shadow: 0 2px 5px var(--color-sombra);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.ramo:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(223, 179, 200, 0.4);
+    background-color: var(--color-ramo-hover);
+}
+
+.ramo.aprobado {
+    background-color: var(--color-aprobado);
+    border-left-color: #6ada65;
+    text-decoration: line-through;
+    color: #555;
+}
+
+.ramo.aprobado:hover {
+    background-color: var(--color-aprobado-hover);
+}
+
+.ramo.bloqueado {
+    background-color: var(--color-bloqueado);
+    border-left-color: #ccc;
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Estilos del Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--color-modal-fondo);
+}
+
+.modal-contenido {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 25px;
+    border: 1px solid var(--color-borde);
+    width: 80%;
+    max-width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    position: relative;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+.cerrar-modal {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cerrar-modal:hover,
+.cerrar-modal:focus {
+    color: #e63980;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#lista-requisitos {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+#lista-requisitos li {
+    background-color: #fdecf2;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #c72c71;
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    #malla-curricular {
+        flex-direction: column;
+    }
+
+    .semestre {
+        min-width: unset;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
